@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>母亲节快乐 💐</title>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --rose: #c2185b;
+    --blush: #f8bbd0;
+    --cream: #fff8f0;
+    --gold: #d4a754;
+    --deep: #7b1fa2;
+    --peach: #ffccbc;
+    --green: #4caf50;
+  }
+
+  body {
+    min-height: 100vh;
+    background: var(--cream);
+    font-family: 'Noto Serif SC', serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Animated gradient background */
+  .bg {
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(248,187,208,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(255,204,188,0.5) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(255,248,240,1) 0%, transparent 70%);
+    animation: bgPulse 6s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  @keyframes bgPulse {
+    0% { opacity: 0.8; }
+    100% { opacity: 1; }
+  }
+
+  /* Floating petals */
+  .petals-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -40px;
+    font-size: 1.4rem;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0% { opacity: 0; transform: translateY(-40px) rotate(0deg) scale(0.8); }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.6; }
+    100% { opacity: 0; transform: translateY(110vh) rotate(720deg) scale(1.1); }
+  }
+
+  /* Main container */
+  .card {
+    position: relative;
+    z-index: 10;
+    max-width: 680px;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    gap: 0;
+  }
+
+  /* Top decoration */
+  .top-ornament {
+    text-align: center;
+    margin-bottom: 20px;
+    animation: floatUp 1s ease-out both;
+  }
+  .top-ornament .flowers {
+    font-size: 2.8rem;
+    letter-spacing: 8px;
+    display: block;
+    animation: sway 4s ease-in-out infinite;
+  }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  /* Main card */
+  .main-card {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(12px);
+    border-radius: 32px;
+    padding: 50px 44px;
+    text-align: center;
+    box-shadow:
+      0 4px 40px rgba(194,24,91,0.08),
+      0 1px 0 rgba(212,167,84,0.3) inset,
+      0 -1px 0 rgba(212,167,84,0.3) inset;
+    border: 1.5px solid rgba(212,167,84,0.25);
+    position: relative;
+    overflow: hidden;
+    animation: cardReveal 1.2s cubic-bezier(0.16,1,0.3,1) 0.2s both;
+  }
+  @keyframes cardReveal {
+    0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Corner decorations */
+  .main-card::before,
+  .main-card::after {
+    content: '✿';
+    position: absolute;
+    font-size: 5rem;
+    opacity: 0.07;
+    color: var(--rose);
+  }
+  .main-card::before { top: -10px; left: -10px; transform: rotate(-20deg); }
+  .main-card::after { bottom: -10px; right: -10px; transform: rotate(160deg); }
+
+  /* Date badge */
+  .date-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), #e91e63);
+    color: white;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    padding: 6px 18px;
+    border-radius: 20px;
+    margin-bottom: 28px;
+    font-family: 'Noto Serif SC', serif;
+    font-weight: 300;
+    animation: fadeIn 1s ease 0.8s both;
+    box-shadow: 0 4px 16px rgba(194,24,91,0.3);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Title */
+  .title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 3.6rem;
+    background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 50%, #e91e63 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    animation: titleReveal 1s ease 0.6s both;
+    text-shadow: none;
+    position: relative;
+    z-index: 1;
+  }
+  @keyframes titleReveal {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .subtitle {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    font-size: 1.6rem;
+    color: var(--rose);
+    letter-spacing: 4px;
+    margin-bottom: 32px;
+    animation: fadeIn 1s ease 1s both;
+    opacity: 0.9;
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    animation: fadeIn 1s ease 1.1s both;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212,167,84,0.5), transparent);
+  }
+  .divider-icon { font-size: 1.1rem; }
+
+  /* Message */
+  .message {
+    font-size: 1.05rem;
+    line-height: 2.1;
+    color: #5d4037;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    margin-bottom: 32px;
+    animation: fadeIn 1s ease 1.2s both;
+    position: relative;
+    z-index: 1;
+  }
+  .message strong {
+    color: var(--rose);
+    font-weight: 600;
+  }
+
+  /* Heart row */
+  .hearts {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 32px;
+    animation: fadeIn 1s ease 1.4s both;
+  }
+  .hearts span {
+    display: inline-block;
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+  .hearts span:nth-child(2) { animation-delay: 0.2s; }
+  .hearts span:nth-child(3) { animation-delay: 0.4s; }
+  .hearts span:nth-child(4) { animation-delay: 0.6s; }
+  .hearts span:nth-child(5) { animation-delay: 0.8s; }
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+
+  /* Poem section */
+  .poem-box {
+    background: linear-gradient(135deg, rgba(248,187,208,0.2), rgba(255,204,188,0.2));
+    border: 1px solid rgba(212,167,84,0.2);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+    animation: fadeIn 1s ease 1.5s both;
+    position: relative;
+    z-index: 1;
+  }
+  .poem-box .quote-mark {
+    font-size: 3rem;
+    color: var(--rose);
+    opacity: 0.2;
+    line-height: 0;
+    font-family: Georgia, serif;
+    vertical-align: -0.5rem;
+  }
+  .poem-text {
+    font-size: 0.95rem;
+    color: #795548;
+    line-height: 2.2;
+    letter-spacing: 1px;
+    font-style: italic;
+  }
+
+  /* Signature */
+  .signature {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.3rem;
+    color: var(--rose);
+    animation: fadeIn 1s ease 1.8s both;
+    position: relative;
+    z-index: 1;
+  }
+  .sig-small {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.78rem;
+    color: #9e9e9e;
+    letter-spacing: 2px;
+    margin-top: 6px;
+    font-weight: 300;
+  }
+
+  /* Bottom flower row */
+  .bottom-flowers {
+    margin-top: 28px;
+    font-size: 2rem;
+    letter-spacing: 12px;
+    animation: floatUp 1s ease 2s both;
+    text-align: center;
+  }
+  @keyframes floatUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Sparkle button */
+  .button {
+    margin-top: 20px;
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), #e91e63);
+    color: white;
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 6px 24px rgba(194,24,91,0.3);
+    transition: all 0.3s ease;
+    animation: fadeIn 1s ease 2.2s both;
+    position: relative;
+    z-index: 1;
+  }
+  .button:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 10px 32px rgba(194,24,91,0.4);
+  }
+  .button:active {
+    transform: translateY(0);
+  }
+
+  /* Fireworks burst on click */
+  .burst {
+    position: fixed;
+    pointer-events: none;
+    font-size: 1.6rem;
+    z-index: 999;
+    animation: burst 1s ease-out forwards;
+  }
+  @keyframes burst {
+    0% { opacity: 1; transform: translate(-50%,-50%) scale(0.3); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%,-50%) scale(2); }
+  }
+
+  @media (max-width: 480px) {
+    .title { font-size: 2.6rem; }
+    .main-card { padding: 36px 24px; }
+    .subtitle { font-size: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<!-- Floating petals -->
+<div class="petals-container" id="petals"></div>
+
+<div class="card">
+  <div class="top-ornament">
+    <span class="flowers">🌸 🌺 🌸</span>
+  </div>
+
+  <div class="main-card">
+    <div class="date-badge">母亲节 · 2026年5月10日</div>
+
+    <div class="title">妈妈，节日快乐</div>
+    <div class="subtitle">❤ 母亲节快乐 ❤</div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <span class="divider-icon">🌹</span>
+      <div class="divider-line"></div>
+    </div>
+
+    <div class="message">
+      亲爱的妈妈，<br>
+      感谢您多年来的<strong>无私付出与深深爱护</strong>，<br>
+      您的温柔与坚强，是我一生最珍贵的礼物。<br>
+      <br>
+      无论身在何处，心里最挂念的，<br>
+      永远是您。<br>
+      <br>
+      祝您<strong>身体健康、笑口常开</strong>，<br>
+      每一天都幸福美满！
+    </div>
+
+    <div class="hearts">
+      <span>💗</span><span>💖</span><span>❤️</span><span>💖</span><span>💗</span>
+    </div>
+
+    <div class="poem-box">
+      <span class="quote-mark">"</span>
+      <div class="poem-text">
+        慈母手中线，游子身上衣，<br>
+        临行密密缝，意恐迟迟归。<br>
+        谁言寸草心，报得三春晖。
+      </div>
+    </div>
+
+    <div class="signature">
+      您最爱的孩子 🌸
+      <div class="sig-small">献上满满的爱与感恩</div>
+    </div>
+  </div>
+
+  <div class="bottom-flowers">🌺 🌷 🌺</div>
+
+  <button class="button" onclick="sparkle(event)">✨ 送上祝福 ✨</button>
+</div>
+
+<script>
+  // Generate floating petals
+  const petals = document.getElementById('petals');
+  const emojis = ['🌸','🌺','🌹','💮','🌷','✿','❀'];
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.fontSize = (0.8 + Math.random() * 1) + 'rem';
+    p.style.animationDuration = (8 + Math.random() * 10) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.opacity = 0;
+    petals.appendChild(p);
+  }
+
+  // Sparkle burst on button click
+  function sparkle(e) {
+    const bursts = ['🎊','💖','🌸','✨','🌹','💐','🎀','💗'];
+    for (let i = 0; i < 12; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.className = 'burst';
+        el.textContent = bursts[Math.floor(Math.random() * bursts.length)];
+        const x = e.clientX + (Math.random() - 0.5) * 200;
+        const y = e.clientY + (Math.random() - 0.5) * 200;
+        el.style.left = x + 'px';
+        el.style.top = y + 'px';
+        el.style.fontSize = (1 + Math.random() * 1.5) + 'rem';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 1000);
+      }, i * 60);
+    }
+  }
+</script>
+</body>
+</html>
