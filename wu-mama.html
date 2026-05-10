@@ -152,7 +152,7 @@
   /* Title */
   .title {
     font-family: 'Ma Shan Zheng', cursive;
-    font-size: 3.6rem;
+    font-size: clamp(2.1rem, 8vw, 3.6rem);
     background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 50%, #e91e63 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -163,6 +163,7 @@
     text-shadow: none;
     position: relative;
     z-index: 1;
+    white-space: nowrap;
   }
   @keyframes titleReveal {
     from { opacity: 0; transform: scale(0.8); }
@@ -333,7 +334,7 @@
   }
 
   @media (max-width: 480px) {
-    .title { font-size: 2.6rem; }
+    .title { font-size: clamp(1.75rem, 9.5vw, 2.6rem); }
     .main-card { padding: 36px 24px; }
     .subtitle { font-size: 1.25rem; }
   }
@@ -354,7 +355,7 @@
   <div class="main-card">
     <div class="date-badge">母亲节 · 献给吴妈妈</div>
 
-    <div class="title">吴妈妈，母亲节快乐！</div>
+    <div class="title">吴妈妈母亲节快乐！</div>
     <div class="subtitle">❤ 感谢遇见这份温暖 ❤</div>
 
     <div class="divider">
